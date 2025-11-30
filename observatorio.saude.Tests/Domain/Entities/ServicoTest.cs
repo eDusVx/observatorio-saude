@@ -6,7 +6,7 @@ namespace observatorio.saude.tests.Domain.Entities;
 
 public class ServicoTests
 {
-    private Servico CriarEntidadeValida()
+    private static Servico CriarEntidadeValida()
     {
         return new Servico
         {
@@ -17,7 +17,7 @@ public class ServicoTests
         };
     }
 
-    private (bool IsValid, ICollection<ValidationResult> Results) ValidarModelo(Servico entidade)
+    private static (bool IsValid, ICollection<ValidationResult> Results) ValidarModelo(Servico entidade)
     {
         var validationResults = new List<ValidationResult>();
         var context = new ValidationContext(entidade, null, null);
@@ -26,7 +26,7 @@ public class ServicoTests
     }
 
     [Fact]
-    public void Entidade_ComDadosValidos_DeveSerConsideradaValida()
+    public void EntidadeComDadosValidosDeveSerConsideradaValida()
     {
         var entidade = CriarEntidadeValida();
 
@@ -37,7 +37,7 @@ public class ServicoTests
     }
 
     [Fact]
-    public void CodCnes_QuandoForDefault_DeveSerInvalido()
+    public void CodCnesQuandoForDefaultDeveSerInvalido()
     {
         var entidade = CriarEntidadeValida();
         entidade.CodCnes = 0;

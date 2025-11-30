@@ -18,9 +18,15 @@ public class GetLeitosPaginadosHandlerTest
     private readonly List<UfDataResponse> _mockUfs = new()
     {
         new UfDataResponse
-            { Id = 35, Sigla = "SP", Nome = "São Paulo", Regiao = new RegiaoResponse { Id = 1, Sigla = "SE", Nome = "Sudeste" } },
+        {
+            Id = 35, Sigla = "SP", Nome = "São Paulo",
+            Regiao = new RegiaoResponse { Id = 1, Sigla = "SE", Nome = "Sudeste" }
+        },
         new UfDataResponse
-            { Id = 33, Sigla = "RJ", Nome = "Rio de Janeiro", Regiao = new RegiaoResponse { Id = 1, Sigla = "SE", Nome = "Sudeste" } }
+        {
+            Id = 33, Sigla = "RJ", Nome = "Rio de Janeiro",
+            Regiao = new RegiaoResponse { Id = 1, Sigla = "SE", Nome = "Sudeste" }
+        }
     };
 
     public GetLeitosPaginadosHandlerTest()

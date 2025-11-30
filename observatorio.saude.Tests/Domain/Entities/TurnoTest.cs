@@ -6,7 +6,7 @@ namespace observatorio.saude.tests.Domain.Entities;
 
 public class TurnoTest
 {
-    private Turno CriarEntidadeValida()
+    private static Turno CriarEntidadeValida()
     {
         return new Turno
         {
@@ -15,7 +15,7 @@ public class TurnoTest
         };
     }
 
-    private (bool IsValid, ICollection<ValidationResult> Results) ValidarModelo(Turno entidade)
+    private static (bool IsValid, ICollection<ValidationResult> Results) ValidarModelo(Turno entidade)
     {
         var validationResults = new List<ValidationResult>();
         var context = new ValidationContext(entidade, null, null);
@@ -24,7 +24,7 @@ public class TurnoTest
     }
 
     [Fact]
-    public void Entidade_ComDadosValidos_DeveSerConsideradaValida()
+    public void EntidadeComDadosValidosDeveSerConsideradaValida()
     {
         var entidade = CriarEntidadeValida();
 
@@ -35,7 +35,7 @@ public class TurnoTest
     }
 
     [Fact]
-    public void CodTurnoAtendimento_QuandoForDefault_DeveSerInvalido()
+    public void CodTurnoAtendimentoQuandoForDefaultDeveSerInvalido()
     {
         var entidade = CriarEntidadeValida();
         entidade.CodTurnoAtendimento = 0;

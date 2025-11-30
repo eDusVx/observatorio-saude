@@ -87,7 +87,7 @@ public class IbgeApiClientTest
         var result = await _client.FindPopulacaoUfAsync(_currentYear);
 
         result.Should().NotBeNull();
-        
+
         result.Dados.Should().NotBeNull().And.HaveCount(1);
         result.AnoEncontrado.Should().Be(_currentYear);
 
@@ -110,7 +110,7 @@ public class IbgeApiClientTest
         var result = await _client.FindPopulacaoUfAsync(_currentYear);
 
         result.Should().NotBeNull();
-        
+
         result.Dados.Should().NotBeNull().And.BeEmpty();
         result.AnoEncontrado.Should().BeNull();
 

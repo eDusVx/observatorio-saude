@@ -26,15 +26,24 @@ public class GetNumeroEstabelecimentosEstadoHandlerTest
     {
         var contagemRepo = new List<NumeroEstabelecimentoEstadoDto>
         {
-            new() { NomeUf = "Distrito Federal",
+            new()
+            {
+                NomeUf = "Distrito Federal",
                 Regiao = "Centro-Oeste",
-                SiglaUf = "DF",CodUf = 35, TotalEstabelecimentos = 1500 },
-            new() { NomeUf = "Distrito Federal",
+                SiglaUf = "DF", CodUf = 35, TotalEstabelecimentos = 1500
+            },
+            new()
+            {
+                NomeUf = "Distrito Federal",
                 Regiao = "Centro-Oeste",
-                SiglaUf = "DF",CodUf = 33, TotalEstabelecimentos = 1200 },
-            new() { NomeUf = "Distrito Federal",
+                SiglaUf = "DF", CodUf = 33, TotalEstabelecimentos = 1200
+            },
+            new()
+            {
+                NomeUf = "Distrito Federal",
                 Regiao = "Centro-Oeste",
-                SiglaUf = "DF",CodUf = 99, TotalEstabelecimentos = 50 }
+                SiglaUf = "DF", CodUf = 99, TotalEstabelecimentos = 50
+            }
         };
 
         var ufsIbge = new List<UfDataResponse>

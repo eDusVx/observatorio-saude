@@ -6,13 +6,13 @@ namespace observatorio.saude.tests.Domain.Entities;
 
 public class EstabelecimentoTest
 {
-    private Estabelecimento CriarEntidadeValida()
+    private static Estabelecimento CriarEntidadeValida()
     {
         return new Estabelecimento
         {
             CodCnes = 1234567,
             DataExtracao = DateTime.Now,
-            Caracteristicas = new CaracteristicaEstabelecimento {CodUnidade = "1"},
+            Caracteristicas = new CaracteristicaEstabelecimento { CodUnidade = "1" },
             Localizacao = new Localizacao { CodUnidade = "1234567" },
             Organizacao = new Organizacao(),
             Turno = new Turno(),
@@ -20,7 +20,7 @@ public class EstabelecimentoTest
         };
     }
 
-    private (bool IsValid, ICollection<ValidationResult> Results) ValidarModelo(Estabelecimento entidade)
+    private static (bool IsValid, ICollection<ValidationResult> Results) ValidarModelo(Estabelecimento entidade)
     {
         var validationResults = new List<ValidationResult>();
         var context = new ValidationContext(entidade, null, null);
@@ -29,7 +29,7 @@ public class EstabelecimentoTest
     }
 
     [Fact]
-    public void Entidade_ComDadosValidos_DeveSerConsideradaValida()
+    public void EntidadeComDadosValidosDeveSerConsideradaValida()
     {
         var entidade = CriarEntidadeValida();
 
@@ -40,7 +40,7 @@ public class EstabelecimentoTest
     }
 
     [Fact]
-    public void CodCnes_QuandoForDefault_DeveSerInvalido()
+    public void CodCnesQuandoForDefaultDeveSerInvalido()
     {
         var entidade = CriarEntidadeValida();
         entidade.CodCnes = 0;
@@ -53,7 +53,7 @@ public class EstabelecimentoTest
     }
 
     [Fact]
-    public void DataExtracao_QuandoForDefault_DeveSerInvalida()
+    public void DataExtracaoQuandoForDefaultDeveSerInvalida()
     {
         var entidade = CriarEntidadeValida();
         entidade.DataExtracao = default;

@@ -6,7 +6,7 @@ namespace observatorio.saude.tests.Domain.Entities;
 
 public class LocalizacaoTest
 {
-    private Localizacao CriarEntidadeValida()
+    private static Localizacao CriarEntidadeValida()
     {
         return new Localizacao
         {
@@ -22,7 +22,7 @@ public class LocalizacaoTest
         };
     }
 
-    private (bool IsValid, ICollection<ValidationResult> Results) ValidarModelo(Localizacao entidade)
+    private static (bool IsValid, ICollection<ValidationResult> Results) ValidarModelo(Localizacao entidade)
     {
         var validationResults = new List<ValidationResult>();
         var context = new ValidationContext(entidade, null, null);
@@ -31,7 +31,7 @@ public class LocalizacaoTest
     }
 
     [Fact]
-    public void Entidade_ComDadosValidos_DeveSerConsideradaValida()
+    public void EntidadeComDadosValidosDeveSerConsideradaValida()
     {
         var entidade = CriarEntidadeValida();
 
@@ -44,7 +44,7 @@ public class LocalizacaoTest
     [Theory]
     [InlineData("")]
     [InlineData("   ")]
-    public void CodUnidade_QuandoNuloOuVazio_DeveSerInvalido(string codUnidade)
+    public void CodUnidadeQuandoNuloOuVazioDeveSerInvalido(string codUnidade)
     {
         var entidade = CriarEntidadeValida();
         entidade.CodUnidade = codUnidade;

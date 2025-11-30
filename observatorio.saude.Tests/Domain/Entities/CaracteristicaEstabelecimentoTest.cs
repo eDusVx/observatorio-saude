@@ -30,7 +30,7 @@ public class CaracteristicaEstabelecimentoTests
     }
 
     [Fact]
-    public void Entidade_ComDadosValidos_DeveSerConsideradaValida()
+    public void EntidadeComDadosValidosDeveSerConsideradaValida()
     {
         var entidade = CriarEntidadeValida();
 
@@ -43,7 +43,7 @@ public class CaracteristicaEstabelecimentoTests
     [Theory]
     [InlineData("")]
     [InlineData("   ")]
-    public void CodUnidade_QuandoNuloOuVazio_DeveSerInvalido(string codUnidade)
+    public void CodUnidadeQuandoNuloOuVazioDeveSerInvalido(string codUnidade)
     {
         var entidade = CriarEntidadeValida();
         entidade.CodUnidade = codUnidade;
@@ -60,7 +60,7 @@ public class CaracteristicaEstabelecimentoTests
     [InlineData("email.sem.arroba.com")]
     [InlineData("email@@duplo.com")]
     [InlineData("@inicio.com")]
-    public void Email_ComFormatoInvalido_DeveSerInvalido(string email)
+    public void EmailComFormatoInvalidoDeveSerInvalido(string email)
     {
         var entidade = CriarEntidadeValida();
         entidade.Email = email;
@@ -72,7 +72,7 @@ public class CaracteristicaEstabelecimentoTests
     }
 
     [Fact]
-    public void Email_ComFormatoValido_DeveSerValido()
+    public void EmailComFormatoValidoDeveSerValido()
     {
         var entidade = CriarEntidadeValida();
         entidade.Email = "teste.valido@meudominio.com.br";
@@ -83,7 +83,7 @@ public class CaracteristicaEstabelecimentoTests
     }
 
     [Fact]
-    public void Telefone_ComFormatoInvalido_DeveSerInvalido()
+    public void TelefoneComFormatoInvalidoDeveSerInvalido()
     {
         var entidade = CriarEntidadeValida();
         entidade.NumTelefone = "isto nao e um telefone";

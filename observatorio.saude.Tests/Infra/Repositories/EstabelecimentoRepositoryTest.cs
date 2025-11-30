@@ -169,7 +169,10 @@ public class EstabelecimentoRepositoryTest : IDisposable
             {
                 CodCnes = 6, CodUnidade = "U6", Localizacao = new LocalizacaoModel { CodUnidade = "U6", CodUf = null }
             },
-            new() { CodCnes = 7, CodUnidade = "U7", Localizacao = new LocalizacaoModel { CodUnidade = "U7", CodUf = null } }
+            new()
+            {
+                CodCnes = 7, CodUnidade = "U7", Localizacao = new LocalizacaoModel { CodUnidade = "U7", CodUf = null }
+            }
         };
         await _context.EstabelecimentoModel.AddRangeAsync(estabelecimentos);
         await _context.SaveChangesAsync();

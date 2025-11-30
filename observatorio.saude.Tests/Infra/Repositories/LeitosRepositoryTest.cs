@@ -42,12 +42,22 @@ public class LeitosRepositoryTest : IDisposable
         _context.Database.EnsureCreated();
 
         _context.EstabelecimentoModel.AddRange(
-            new EstabelecimentoModel { Localizacao = new LocalizacaoModel
+            new EstabelecimentoModel
             {
-                CodUnidade = CodUnidade1, CodUf = CodUfSp, Endereco = "Rua Teste 1", Numero = 100, Bairro = "Centro"
-            },CodCnes = CodCnes1, CodUnidade = CodUnidade1 },
-            new EstabelecimentoModel { Localizacao = new LocalizacaoModel
-                { CodUnidade = CodUnidade2, CodUf = CodUfRj, Endereco = "Av Teste 2", Numero = 50, Bairro = "Praia" }, CodCnes = CodCnes2, CodUnidade = CodUnidade2 });
+                Localizacao = new LocalizacaoModel
+                {
+                    CodUnidade = CodUnidade1, CodUf = CodUfSp, Endereco = "Rua Teste 1", Numero = 100, Bairro = "Centro"
+                },
+                CodCnes = CodCnes1, CodUnidade = CodUnidade1
+            },
+            new EstabelecimentoModel
+            {
+                Localizacao = new LocalizacaoModel
+                {
+                    CodUnidade = CodUnidade2, CodUf = CodUfRj, Endereco = "Av Teste 2", Numero = 50, Bairro = "Praia"
+                },
+                CodCnes = CodCnes2, CodUnidade = CodUnidade2
+            });
 
         _context.LeitosModel.AddRange(
             new LeitoModel

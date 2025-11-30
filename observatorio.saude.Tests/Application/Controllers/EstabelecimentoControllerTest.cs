@@ -39,12 +39,18 @@ public class EstabelecimentoControllerTest
     {
         var resultadoEsperado = new List<NumeroEstabelecimentoEstadoDto>
         {
-            new() { NomeUf = "Distrito Federal",
+            new()
+            {
+                NomeUf = "Distrito Federal",
                 Regiao = "Centro-Oeste",
-                SiglaUf = "DF",CodUf = 35, TotalEstabelecimentos = 1500 },
-            new() { NomeUf = "Distrito Federal",
+                SiglaUf = "DF", CodUf = 35, TotalEstabelecimentos = 1500
+            },
+            new()
+            {
+                NomeUf = "Distrito Federal",
                 Regiao = "Centro-Oeste",
-                SiglaUf = "DF",CodUf = 33, TotalEstabelecimentos = 1200 }
+                SiglaUf = "DF", CodUf = 33, TotalEstabelecimentos = 1200
+            }
         };
 
         _mediatorMock
@@ -212,7 +218,7 @@ public class EstabelecimentoControllerTest
     [Fact]
     public async Task GetGeoJson_QuandoChamado_DeveRetornarOkComGeoJsonFeatureCollection()
     {
-        var query = new GetEstabelecimentosGeoJsonQuery { Uf = "DF", Zoom = 1};
+        var query = new GetEstabelecimentosGeoJsonQuery { Uf = "DF", Zoom = 1 };
         var resultadoEsperado = new GeoJsonFeatureCollection(new List<GeoJsonFeature>());
 
         _mediatorMock

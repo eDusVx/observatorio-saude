@@ -81,13 +81,21 @@ public class EstabelecimentoRepository(ApplicationDbContext context) : IEstabele
             .Select(e => new ExportEstabelecimentoDto
             {
                 CodCnes = e.CodCnes,
-                RazaoSocial = e.CaracteristicaEstabelecimento != null ? e.CaracteristicaEstabelecimento.NmRazaoSocial ?? string.Empty : string.Empty,
-                NomeFantasia = e.CaracteristicaEstabelecimento != null ? e.CaracteristicaEstabelecimento.NmFantasia ?? string.Empty : string.Empty,
-                Endereco = e.Localizacao != null ? $"{e.Localizacao.Endereco ?? string.Empty}, {e.Localizacao.Numero.ToString() ?? string.Empty}" : string.Empty,
+                RazaoSocial = e.CaracteristicaEstabelecimento != null
+                    ? e.CaracteristicaEstabelecimento.NmRazaoSocial ?? string.Empty
+                    : string.Empty,
+                NomeFantasia = e.CaracteristicaEstabelecimento != null
+                    ? e.CaracteristicaEstabelecimento.NmFantasia ?? string.Empty
+                    : string.Empty,
+                Endereco = e.Localizacao != null
+                    ? $"{e.Localizacao.Endereco ?? string.Empty}, {e.Localizacao.Numero.ToString() ?? string.Empty}"
+                    : string.Empty,
                 Bairro = e.Localizacao != null ? e.Localizacao.Bairro ?? string.Empty : string.Empty,
                 Cep = e.Localizacao != null ? e.Localizacao.CodCep.ToString() ?? string.Empty : string.Empty,
                 CodUfParaMapeamento = e.Localizacao != null ? e.Localizacao.CodUf : null,
-                EsferaAdministrativa = e.Organizacao != null ? e.Organizacao.DscrEsferaAdministrativa ?? string.Empty : string.Empty
+                EsferaAdministrativa = e.Organizacao != null
+                    ? e.Organizacao.DscrEsferaAdministrativa ?? string.Empty
+                    : string.Empty
             });
 
         await foreach (var item in finalQuery.AsAsyncEnumerable().WithCancellation(cancellationToken))
@@ -133,7 +141,9 @@ public class EstabelecimentoRepository(ApplicationDbContext context) : IEstabele
             {
                 Latitude = e.Localizacao!.Latitude!.Value,
                 Longitude = e.Localizacao!.Longitude!.Value,
-                NomeFantasia = e.CaracteristicaEstabelecimento != null ? e.CaracteristicaEstabelecimento.NmFantasia : null,
+                NomeFantasia = e.CaracteristicaEstabelecimento != null
+                    ? e.CaracteristicaEstabelecimento.NmFantasia
+                    : null,
                 Endereco = e.Localizacao!.Endereco,
                 Numero = e.Localizacao!.Numero,
                 Bairro = e.Localizacao!.Bairro,

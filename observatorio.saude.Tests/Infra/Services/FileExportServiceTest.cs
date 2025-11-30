@@ -16,8 +16,6 @@ public class TesteExportDto
     [Display(Name = "Valor Decimal")] public decimal Valor { get; set; }
 
     [Display(Name = "Data de Criação")] public DateTime Data { get; set; } = new(2025, 10, 17, 10, 30, 0);
-
-    public string PropriedadeIgnorada { get; set; } = "Ignorar";
 }
 
 public class FileExportServiceTest
@@ -28,17 +26,17 @@ public class FileExportServiceTest
     public FileExportServiceTest()
     {
         _service = new FileExportService();
-        _mockData = new List<TesteExportDto>
-        {
-            new() { Id = 1, Nome = "Alice", Valor = 10.50M },
-            new() { Id = 2, Nome = "Bob", Valor = 20.75M, Data = new DateTime(2024, 1, 1) },
-            new() { Id = 3, Nome = "Charlie", Valor = 30.00M, Data = new DateTime(2023, 6, 15) }
-        };
+        _mockData =
+        [
+            new TesteExportDto { Id = 1, Nome = "Alice", Valor = 10.50M },
+            new TesteExportDto { Id = 2, Nome = "Bob", Valor = 20.75M, Data = new DateTime(2024, 1, 1) },
+            new TesteExportDto { Id = 3, Nome = "Charlie", Valor = 30.00M, Data = new DateTime(2023, 6, 15) }
+        ];
     }
 
 
     [Fact]
-    public void GenerateExcel_DeveGerarCabecalhoEmNegritoApenasComDisplayAttribute()
+    public void GenerateExcelDeveGerarCabecalhoEmNegritoApenasComDisplayAttribute()
     {
         var excelBytes = _service.GenerateExcel(_mockData);
 
@@ -55,7 +53,7 @@ public class FileExportServiceTest
     }
 
     [Fact]
-    public void GenerateExcel_DeveExportarTodosOsRegistrosCorretamenteAjustarColunas()
+    public void GenerateExcelDeveExportarTodosOsRegistrosCorretamenteAjustarColunas()
     {
         var excelBytes = _service.GenerateExcel(_mockData);
 
@@ -73,7 +71,7 @@ public class FileExportServiceTest
 
 
     [Fact]
-    public async Task GenerateCsvStreamAsync_DeveGerarConteudoCorretoComDelimitadorPontoVirgula()
+    public async Task GenerateCsvStreamAsyncDeveGerarConteudoCorretoComDelimitadorPontoVirgula()
     {
         var asyncData = _mockData.ToAsyncEnumerable();
         await using var outputStream = new MemoryStream();
@@ -84,7 +82,7 @@ public class FileExportServiceTest
         using var streamReader = new StreamReader(outputStream);
         var csvContent = await streamReader.ReadToEndAsync();
 
-        var records = csvContent.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+        var records = csvContent.Split(['\n'], StringSplitOptions.RemoveEmptyEntries);
 
         records[0].Should().Contain("ID do Registro;");
         records[1].Should().StartWith("1;Alice;10.50;");
@@ -92,7 +90,7 @@ public class FileExportServiceTest
 
 
     [Fact]
-    public async Task GenerateXlsxStreamAsync_DeveGerarPlanilhaComCabecalhoECelulasCorretas()
+    public async Task GenerateXlsxStreamAsyncDeveGerarPlanilhaComCabecalhoECelulasCorretas()
     {
         var asyncData = _mockData.ToAsyncEnumerable();
         await using var outputStream = new MemoryStream();
@@ -107,13 +105,13 @@ public class FileExportServiceTest
 
         workbookPart.Workbook.Should().NotBeNull();
         workbookPart.Workbook.Sheets.Should().NotBeNull();
-        
+
         var sheet = workbookPart.Workbook.Sheets!.First().Should().NotBeNull().And.BeOfType<Sheet>().Subject;
         sheet.Id.Should().NotBeNull();
 
         var worksheetPart = (WorksheetPart)workbookPart.GetPartById(sheet.Id!);
         worksheetPart.Should().NotBeNull();
-        
+
         var sheetData = worksheetPart.Worksheet.Elements<SheetData>().First();
         sheetData.Should().NotBeNull();
 

@@ -28,7 +28,8 @@ public class GetEstabelecimentosPaginadosHandlerTest
         {
             CodCnes = 1234567,
             DataExtracao = new DateTime(2025, 09, 08),
-            CaracteristicaEstabelecimento = new CaracteristicaEstabelecimentoModel { CodUnidade = "1", NmFantasia = "Hospital de Teste" },
+            CaracteristicaEstabelecimento = new CaracteristicaEstabelecimentoModel
+                { CodUnidade = "1", NmFantasia = "Hospital de Teste" },
             Localizacao = new LocalizacaoModel { CodUnidade = "1", Bairro = "Bairro dos Testes", CodUf = 35 },
             Organizacao = new OrganizacaoModel { DscrEsferaAdministrativa = "1", TpGestao = 'M' },
             Turno = new TurnoModel { DscrTurnoAtendimento = "24 HORAS" },
