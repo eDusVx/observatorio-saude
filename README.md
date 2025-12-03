@@ -12,6 +12,7 @@ O **Observatório Saúde** é uma API RESTful desenvolvida para monitorar, agreg
   * **Dados e Scripts:** Python (Auxiliar)
   * **Testes:** xUnit/NUnit
   * **Deployment:** GCP (Google Cloud)
+  * **Banco de dados:** Postgresql (Google Cloud)
 
 ## 🔌 API Endpoints
 
